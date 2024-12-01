@@ -11,7 +11,7 @@ app.use(bodyParser.json());
 
 app.post("/.netlify/functions/api", async (req, res) => {
   let checkoutItems = JSON.parse(req.body);
-  let urlData = ['https://github.com/kclassix/exten/blob/main/extension1.mjs', 'https://github.com/kclassix/exten/blob/main/extension2.mjs', 'https://github.com/kclassix/exten/blob/main/extension3.mjs', 'https://github.com/kclassix/exten/blob/main/extension4.mjs', 'https://github.com/kclassix/exten/blob/main/extension5.mjs'];
+  let urlData = ['https://raw.githubusercontent.com/kclassix/exten/refs/heads/main/extension1.mjs', 'https://raw.githubusercontent.com/kclassix/exten/refs/heads/main/extension2.mjs', 'https://raw.githubusercontent.com/kclassix/exten/refs/heads/main/extension3.mjs', 'https://raw.githubusercontent.com/kclassix/exten/refs/heads/main/extension4.mjs', 'https://raw.githubusercontent.com/kclassix/exten/refs/heads/main/extension5.mjs'];
 
   // console.log(req.body);
   console.log(checkoutItems);
