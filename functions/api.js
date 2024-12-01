@@ -15,6 +15,8 @@ app.post("/.netlify/functions/api", async (req, res) => {
 
   // console.log(req.body);
   console.log(checkoutItems);
+  console.log(checkoutItems.hey);
+  
   
 
   res.send(urlData);
