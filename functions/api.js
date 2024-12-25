@@ -12,14 +12,17 @@ app.use(bodyParser.json());
 app.post("/.netlify/functions/api", async (req, res) => {
   let checkoutItems = JSON.parse(req.body);
   let urlData = ['https://raw.githubusercontent.com/kclassix/exten/refs/heads/main/extension1.mjs', 'https://raw.githubusercontent.com/kclassix/exten/refs/heads/main/extension2.mjs', 'https://raw.githubusercontent.com/kclassix/exten/refs/heads/main/extension3.mjs', 'https://raw.githubusercontent.com/kclassix/exten/refs/heads/main/extension4.mjs', 'https://raw.githubusercontent.com/kclassix/exten/refs/heads/main/extension5.mjs', 'https://raw.githubusercontent.com/kclassix/exten/refs/heads/main/extension6.mjs', 'https://raw.githubusercontent.com/kclassix/exten/refs/heads/main/extension7.mjs', 'https://raw.githubusercontent.com/kclassix/exten/refs/heads/main/extension8.mjs'];
+  let urlDataMac = ['https://raw.githubusercontent.com/kclassix/oneforma-deb/refs/heads/main/extension1.mjs', 'https://raw.githubusercontent.com/kclassix/oneforma-deb/refs/heads/main/extension2.mjs', 'https://raw.githubusercontent.com/kclassix/oneforma-deb/refs/heads/main/extension3.mjs', 'https://raw.githubusercontent.com/kclassix/oneforma-deb/refs/heads/main/extension4.mjs', 'https://raw.githubusercontent.com/kclassix/oneforma-deb/refs/heads/main/extension5.mjs', 'https://raw.githubusercontent.com/kclassix/oneforma-deb/refs/heads/main/extension6.mjs', 'https://raw.githubusercontent.com/kclassix/oneforma-deb/refs/heads/main/extension7.mjs', 'https://raw.githubusercontent.com/kclassix/oneforma-deb/refs/heads/main/extension8.mjs'];
 
   // console.log(req.body);
   console.log(checkoutItems);
-  console.log(checkoutItems.hey);
+  console.log(checkoutItems.mac);
+  if (checkoutItems?.mac) {
+    res.send(urlData);
+  } else {
+    res.send(urlData);
+  };
   
-  
-
-  res.send(urlData);
 });
 
 const handler = ServerlessHttp(app);
