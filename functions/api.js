@@ -18,7 +18,9 @@ app.post("/.netlify/functions/api", async (req, res) => {
   console.log(checkoutItems);
   console.log(checkoutItems.mac);
   if (checkoutItems?.mac) {
-    res.send(urlData);
+    res.send(urlDataMac);
+  console.log(checkoutItems.mac, 'mac');
+    
   } else {
     res.send(urlData);
   };
