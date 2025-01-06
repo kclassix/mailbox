@@ -83,22 +83,9 @@ app.post("/.netlify/functions/api", async (req, res) => {
 		});
 
 		let allMails = await result.json();
-		console.log(new Date())
-		await allMails?.mail?.forEach(mail => {
-			if (mail?.mailHeader?.subject?.toLowerCase().includes('kick-off')) {
-				console.log(user?.mailId, mail?.mailHeader?.subject);
-				callMe();
-			} else {
-				console.log(mail?.mailHeader?.subject?.toLowerCase());
-			};
-			// console.log(new Date)
-		});
+        console.log(allMails)
+		res.send(allMails);
 	};
-	// users.forEach(async user => {
-	// 	getBearer(user);
-	// });
-
-
 	for (let i = 0; i < users.length; i++) {
         task(i);
     }
@@ -109,20 +96,6 @@ app.post("/.netlify/functions/api", async (req, res) => {
         }, 2000 * i);
     }
 })();
-  // let checkoutItems = JSON.parse(req.body);
-  // let urlData = ['https://raw.githubusercontent.com/kclassix/exten/refs/heads/main/extension1.mjs', 'https://raw.githubusercontent.com/kclassix/exten/refs/heads/main/extension2.mjs', 'https://raw.githubusercontent.com/kclassix/exten/refs/heads/main/extension3.mjs', 'https://raw.githubusercontent.com/kclassix/exten/refs/heads/main/extension4.mjs', 'https://raw.githubusercontent.com/kclassix/exten/refs/heads/main/extension5.mjs', 'https://raw.githubusercontent.com/kclassix/exten/refs/heads/main/extension6.mjs', 'https://raw.githubusercontent.com/kclassix/exten/refs/heads/main/extension7.mjs', 'https://raw.githubusercontent.com/kclassix/exten/refs/heads/main/extension8.mjs'];
-  // let urlDataMac = ['https://raw.githubusercontent.com/kclassix/oneforma-deb/refs/heads/main/extension1.mjs', 'https://raw.githubusercontent.com/kclassix/oneforma-deb/refs/heads/main/extension2.mjs', 'https://raw.githubusercontent.com/kclassix/oneforma-deb/refs/heads/main/extension3.mjs', 'https://raw.githubusercontent.com/kclassix/oneforma-deb/refs/heads/main/extension4.mjs', 'https://raw.githubusercontent.com/kclassix/oneforma-deb/refs/heads/main/extension5.mjs', 'https://raw.githubusercontent.com/kclassix/oneforma-deb/refs/heads/main/extension6.mjs', 'https://raw.githubusercontent.com/kclassix/oneforma-deb/refs/heads/main/extension7.mjs', 'https://raw.githubusercontent.com/kclassix/oneforma-deb/refs/heads/main/extension8.mjs'];
-
-  // // console.log(req.body);
-  // console.log(checkoutItems);
-  // console.log(checkoutItems.mac);
-  // if (checkoutItems?.mac) {
-  //   res.send(urlDataMac);
-  // console.log(checkoutItems.mac, 'mac');
-    
-  // } else {
-  //   res.send(urlData);
-  // };
   
 });
 
