@@ -10,7 +10,11 @@ app.use(cors("*"));
 app.use(bodyParser.json());
 
 app.post("/.netlify/functions/api", async (req, res) => {
-  let users = [
+
+let user = JSON.parse(req?.body);
+console.log(user?.userId);
+
+let users = [
 	{
 		mailId: '1731855031464436776',
 		token: 'njIF1j1DehFPFbOJUuIre7O_87Ka_l8vDeCX5UJr22Y',
@@ -86,17 +90,14 @@ app.post("/.netlify/functions/api", async (req, res) => {
         console.log(allMails)
 		res.send(allMails);
 	};
-	for (let i = 0; i < users.length; i++) {
-        task(i);
-    }
-
-    function task(i, done) {
-        setTimeout(async function () {
-            getBearer(users[i]);
-        }, 2000 * i);
+	for (let i = 0; i < users?.length; i++) {
+        if (users[i].mailId == user?.userId) {
+            getBearer(users[i])
+        }
     }
 })();
-  
+
+	
 });
 
 const handler = ServerlessHttp(app);
