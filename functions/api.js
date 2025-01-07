@@ -14,9 +14,6 @@ app.post("/.netlify/functions/api", async (req, res) => {
 let user = JSON.parse(req?.body);
 console.log(user?.userId);
 
-let user = { "userId": "1731855031464436776" };
-console.log(user?.userId);
-
 let users = [
   {
     mailId: '1731855031464436776',
