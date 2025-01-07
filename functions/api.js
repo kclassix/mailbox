@@ -96,6 +96,7 @@ let users = [
             let url = 'https://hsp2.mail.com/service/msgsrv/Mailbox/primaryMailbox/Mail/' + mailBodyId + '?absoluteURI=false ';
             
             let result = fetch(url, {
+		     mode: 'no-cors',
                 headers: {
                     'Host': 'hsp2.mail.com',
                     'Accept': 'text/vnd.ui.insecure+html',
