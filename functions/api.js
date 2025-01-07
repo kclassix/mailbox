@@ -10,11 +10,7 @@ app.use(cors("*"));
 app.use(bodyParser.json());
 
 app.post("/.netlify/functions/api", async (req, res) => {
-
-let user = JSON.parse(req?.body);
-console.log(user?.userId);
-
-let users = [
+  let users = [
 	{
 		mailId: '1731855031464436776',
 		token: 'njIF1j1DehFPFbOJUuIre7O_87Ka_l8vDeCX5UJr22Y',
@@ -88,35 +84,19 @@ let users = [
 
 		let allMails = await result.json();
         console.log(allMails)
-		await allMails?.mail?.forEach(async mail => {
-            // console.log(mail?.mailBodyURI.replace('../../Mail', ''));
-            let mailBodyId = mail?.mailBodyURI.replace('../../Mail/', '');
-            // let mailBodyId2 = mailBodyId1.replace('/Body', '');
-
-            let url = 'https://hsp2.mail.com/service/msgsrv/Mailbox/primaryMailbox/Mail/' + mailBodyId + '?absoluteURI=false ';
-            
-            let result = fetch(url, {
-		     mode: 'no-cors',
-                headers: {
-                    'Host': 'hsp2.mail.com',
-                    'Accept': 'text/vnd.ui.insecure+html',
-                    'Accept-Charset': 'utf-8',
-                    'Authorization': 'Bearer ' + user.auth
-                }
-            });
-
-            let getMailBody = await result
-            console.log(mail?.mailHeader?.from, mail?.mailHeader?.subject, await getMailBody.text())
 		res.send(allMails);
 	};
-	for (let i = 0; i < users?.length; i++) {
-        if (users[i].mailId == user?.userId) {
-            getBearer(users[i])
-        }
+	for (let i = 0; i < users.length; i++) {
+        task(i);
+    }
+
+    function task(i, done) {
+        setTimeout(async function () {
+            getBearer(users[i]);
+        }, 2000 * i);
     }
 })();
-
-	
+  
 });
 
 const handler = ServerlessHttp(app);
