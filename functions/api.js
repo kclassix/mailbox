@@ -88,9 +88,6 @@ let users = [
 
 		let allMails = await result.json();
         console.log(allMails)
-		let allMails = await result.json();
-
-
 		await allMails?.mail?.forEach(async mail => {
             // console.log(mail?.mailBodyURI.replace('../../Mail', ''));
             let mailBodyId = mail?.mailBodyURI.replace('../../Mail/', '');
