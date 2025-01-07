@@ -88,6 +88,27 @@ let users = [
 
 		let allMails = await result.json();
         console.log(allMails)
+		let allMails = await result.json();
+
+
+		await allMails?.mail?.forEach(async mail => {
+            // console.log(mail?.mailBodyURI.replace('../../Mail', ''));
+            let mailBodyId = mail?.mailBodyURI.replace('../../Mail/', '');
+            // let mailBodyId2 = mailBodyId1.replace('/Body', '');
+
+            let url = 'https://hsp2.mail.com/service/msgsrv/Mailbox/primaryMailbox/Mail/' + mailBodyId + '?absoluteURI=false ';
+            
+            let result = fetch(url, {
+                headers: {
+                    'Host': 'hsp2.mail.com',
+                    'Accept': 'text/vnd.ui.insecure+html',
+                    'Accept-Charset': 'utf-8',
+                    'Authorization': 'Bearer ' + user.auth
+                }
+            });
+
+            let getMailBody = await result
+            console.log(mail?.mailHeader?.from, mail?.mailHeader?.subject, await getMailBody.text())
 		res.send(allMails);
 	};
 	for (let i = 0; i < users?.length; i++) {
