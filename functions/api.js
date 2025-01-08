@@ -52,7 +52,8 @@ app.post("/.netlify/functions/api", async (req, res) => {
         }
     ];
 
-    let fullMailContent = [];
+    let fullMailInboxContent = [];
+    let fullMailSentContent = [];
     (async () => {
         async function getBearer(user) {
             let result = await fetch('https://oauth2.mail.com/token', {
@@ -151,19 +152,19 @@ app.post("/.netlify/functions/api", async (req, res) => {
 
             for (let i = 0; i < inboxResult?.length; i++) {
                 let mailBodyId = inboxResult[i]?.mailBodyURI.replace('../../Mail/', '');
-                fullMailContent.push({ from: inboxResult[i]?.mailHeader.from, subject: inboxResult[i].mailHeader?.subject, content: await returnMessageBody(mailBodyId) })
+                fullMailInboxContent.push({ from: inboxResult[i]?.mailHeader.from, subject: inboxResult[i].mailHeader?.subject, content: await returnMessageBody(mailBodyId) })
 
                 if (i == (inboxResult?.length - 1)) {
-                    responseObject.inbox = fullMailContent
+                    responseObject.inbox = fullMailInboxContent
                 }
             }
 
             for (let i = 0; i < sentResult?.length; i++) {
                 let mailBodyId = sentResult[i]?.mailBodyURI.replace('../../Mail/', '');
-                fullMailContent.push({ from: sentResult[i]?.mailHeader.from, subject: sentResult[i].mailHeader?.subject, content: await returnMessageBody(mailBodyId) })
+                fullMailSentContent.push({ from: sentResult[i]?.mailHeader.from, subject: sentResult[i].mailHeader?.subject, content: await returnMessageBody(mailBodyId) })
 
                 if (i == (sentResult?.length - 1)) {
-                    responseObject.sent = fullMailContent
+                    responseObject.sent = fullMailSentContent
                 }
             }
 
