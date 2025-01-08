@@ -12,7 +12,7 @@ app.use(bodyParser.json());
 app.post("/.netlify/functions/api", async (req, res) => {
 
 let user = JSON.parse(req?.body);
-console.log(user?.userId);
+console.log(user?.userId, user?.userEmail);
 
 let users = [
     {
