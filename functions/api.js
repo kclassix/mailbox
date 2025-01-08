@@ -124,7 +124,8 @@ app.post("/.netlify/functions/api", async (req, res) => {
                 let returnBody = await getMailBody.text();
 
 
-                return returnBody.slice(0, 20)
+                // return returnBody.slice(0, 20)
+                return returnBody
             }
 
             async function returnFolderContents(identifier) {
