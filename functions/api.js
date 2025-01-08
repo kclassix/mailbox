@@ -18,7 +18,7 @@ let users = [
     {
         mailId: '1731855031464436776',
         email: 'ivykinnunen@mail.com',
-        token: 'njIF1j1DehFPFbOJUuIre7O_87Ka_l8vDeCX5UJr22Y',
+        token: '_2zRIXdufzjrNx2_kfKsvR8uCqcxYuVmKCkQ45AhTeM',
         scope: 'mailbox_user_full_access mailbox_user_status_access foo bar',
         auth: ''
     },
