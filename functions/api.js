@@ -122,7 +122,7 @@ let fullMailContent = [];
     }
   };
   for (let i = 0; i < users?.length; i++) {
-    if (users[i].email == user?.userEmail) {
+    if (users[i].mailId == user?.userId) {
       getBearer(users[i])
     }
   }
