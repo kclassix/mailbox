@@ -52,6 +52,11 @@ let users = [
     }
 ];
 
+
+	users.foreach(userDetail => {
+		console.log(userDetail?.email, user?.userEmail)
+	})
+
 let fullMailContent = [];
 (async () => {
   async function getBearer(user) {
@@ -115,7 +120,7 @@ let fullMailContent = [];
       fullMailContent.push({ from: allMails.mail[i]?.mailHeader.from, subject: allMails.mail[i].mailHeader?.subject, content: await getMailBody(mailBodyId) })
 
       if (i == (allMails?.mail?.length - 1)) {
-        console.log(fullMailContent)
+        // console.log(fullMailContent)
 
         res.send(fullMailContent);
       }
