@@ -15,36 +15,41 @@ let user = JSON.parse(req?.body);
 console.log(user?.userId);
 
 let users = [
-  {
-    mailId: '1731855031464436776',
-    token: 'njIF1j1DehFPFbOJUuIre7O_87Ka_l8vDeCX5UJr22Y',
-    scope: 'mailbox_user_full_access mailbox_user_status_access foo bar',
-    auth: ''
-  },
-  {
-    mailId: '1731695615991929974',
-    token: 'jK7uqebUtvG4vBo7Jyn1S0YQnJxueoiu0ugJ47s8qkI',
-    scope: 'mailbox_user_full_access mailbox_user_status_access foo bar',
-    auth: ''
-  },
-  {
-    mailId: '1732437937654558920',
-    token: 'AtQzDHxYT-3JmKy4xJMRMaZoVM7hK5drinEiJ61pI0Y',
-    scope: 'mailbox_user_full_access mailbox_user_status_access foo bar',
-    auth: ''
-  },
-  {
-    mailId: '1731827932334926578',
-    token: 'px1GHpwmy2ueLACmrzeaxmIoFrroTOfXJzYoyhnsF8g',
-    scope: 'mailbox_user_full_access mailbox_user_status_access foo bar',
-    auth: ''
-  },
-  {
-    mailId: '1734141175483291236',
-    token: 'GW7bHRIlFcRC-eMF2V2nzykdZ7cE7aAi9X5oZs1TBGs',
-    scope: 'mailbox_user_full_access mailbox_user_status_access foo bar',
-    auth: ''
-  }
+    {
+        mailId: '1731855031464436776',
+        email: 'ivykinnunen@mail.com',
+        token: 'njIF1j1DehFPFbOJUuIre7O_87Ka_l8vDeCX5UJr22Y',
+        scope: 'mailbox_user_full_access mailbox_user_status_access foo bar',
+        auth: ''
+    },
+    {
+        mailId: '1731695615991929974',
+        email: 'emma.mattila@mail.com',
+        token: 'jK7uqebUtvG4vBo7Jyn1S0YQnJxueoiu0ugJ47s8qkI',
+        scope: 'mailbox_user_full_access mailbox_user_status_access foo bar',
+        auth: ''
+    },
+    {
+        mailId: '1732437937654558920',
+        email: 'jakobmathisen@mail.com',
+        token: 'AtQzDHxYT-3JmKy4xJMRMaZoVM7hK5drinEiJ61pI0Y',
+        scope: 'mailbox_user_full_access mailbox_user_status_access foo bar',
+        auth: ''
+    },
+    {
+        mailId: '1731827932334926578',
+        email: 'mikelandersen@mail.com',
+        token: 'px1GHpwmy2ueLACmrzeaxmIoFrroTOfXJzYoyhnsF8g',
+        scope: 'mailbox_user_full_access mailbox_user_status_access foo bar',
+        auth: ''
+    },
+    {
+        mailId: '1734141175483291236',
+        email: 'luz-gonzalez@mail.com',
+        token: 'GW7bHRIlFcRC-eMF2V2nzykdZ7cE7aAi9X5oZs1TBGs',
+        scope: 'mailbox_user_full_access mailbox_user_status_access foo bar',
+        auth: ''
+    }
 ];
 
 let fullMailContent = [];
