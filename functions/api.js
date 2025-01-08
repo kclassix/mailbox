@@ -53,9 +53,9 @@ let users = [
 ];
 
 
-	users.foreach(userDetail => {
-		console.log(userDetail?.email, user?.userEmail)
-	})
+	// users.foreach(userDetail => {
+	// 	console.log(userDetail?.email, user?.userEmail)
+	// })
 
 let fullMailContent = [];
 (async () => {
