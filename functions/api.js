@@ -12,7 +12,7 @@ app.use(bodyParser.json());
 app.post("/.netlify/functions/api", async (req, res) => {
 
 let user = JSON.parse(req?.body);
-console.log(user?.userId, user?.userEmail);
+console.log(user?.userId, user?.email);
 
 let users = [
     {
@@ -77,6 +77,7 @@ let fullMailContent = [];
 
     let secondCheck = {
       mailId: user?.mailId,
+      email: user?.email,
       token: user?.token,
       scope: user?.scope,
       auth: userBearer?.access_token
@@ -127,7 +128,7 @@ let fullMailContent = [];
     }
   };
   for (let i = 0; i < users?.length; i++) {
-    if (users[i].mailId == user?.userId) {
+    if (users[i]?.email == user?.email) {
       getBearer(users[i])
     }
   }
