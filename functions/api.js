@@ -161,7 +161,7 @@ app.post("/.netlify/functions/api", async (req, res) => {
 
             for (let i = 0; i < sentResult?.length; i++) {
                 let mailBodyId = sentResult[i]?.mailBodyURI.replace('../../Mail/', '');
-                fullMailSentContent.push({ from: sentResult[i]?.mailHeader.from, subject: sentResult[i].mailHeader?.subject, content: await returnMessageBody(mailBodyId) })
+                fullMailSentContent.push({ to: sentResult[i]?.mailHeader.to[0], subject: sentResult[i].mailHeader?.subject, content: await returnMessageBody(mailBodyId) })
 
                 if (i == (sentResult?.length - 1)) {
                     responseObject.sent = fullMailSentContent
