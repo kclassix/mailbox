@@ -49,7 +49,14 @@ app.post("/.netlify/functions/api", async (req, res) => {
             token: 'GW7bHRIlFcRC-eMF2V2nzykdZ7cE7aAi9X5oZs1TBGs',
             scope: 'mailbox_user_full_access mailbox_user_status_access foo bar',
             auth: ''
-        }
+        },
+    {
+        mailId: '1734141175483291236',
+        email: 'evelynharrison@fastservice.com',
+        token: 'Vzu6EbTs5BQMIjSMGJ1PD0L2R9GPNdZh206tJd1t1xg',
+        scope: 'mailbox_user_full_access mailbox_user_status_access foo bar',
+        auth: ''
+    }
     ];
 
     let fullMailInboxContent = [];
