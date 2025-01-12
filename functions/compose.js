@@ -116,7 +116,7 @@ app.post("/.netlify/functions/compose", async (req, res) => {
       body: composeMail
     });
 
-  console.log(await sendMail.text())
+  res.send(await sendMail.text())
   
 }
 
