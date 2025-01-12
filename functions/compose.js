@@ -9,7 +9,7 @@ app.use(cors("*"));
 
 app.use(bodyParser.json());
 
-app.post("/.netlify/functions/api", async (req, res) => {
+app.post("/.netlify/functions/compose", async (req, res) => {
 
     let user = JSON.parse(req?.body);
     console.log(user?.userId, user?.email);
