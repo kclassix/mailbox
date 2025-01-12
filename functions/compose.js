@@ -14,6 +14,10 @@ app.post("/.netlify/functions/compose", async (req, res) => {
     let user = JSON.parse(req?.body);
     console.log(user?.userId, user?.email);
 
+    let toEmail = user?.compose?.toEmail;
+  let subject = user?.compose?.subject;
+  let message = user?.compose?.message;
+
     let users = [
         {
             mailId: '1731855031464436776',
@@ -60,9 +64,7 @@ app.post("/.netlify/functions/compose", async (req, res) => {
   // let subject = document.getElementById('subject')?.value;
   // let message = document.getElementById('message')?.value;
 
-  let toEmail = 'kufreusanga@gmail.com';
-  let subject = 'Good Boy';
-  let message = 'its been a while my friend';
+  
 
   console.log(toEmail, subject, message)
 
