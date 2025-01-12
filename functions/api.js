@@ -55,75 +55,7 @@ app.post("/.netlify/functions/api", async (req, res) => {
     let fullMailInboxContent = [];
     let fullMailSentContent = [];
     (async () => {
-        if (user?.compose) {
-            let toEmail = 'kufreusanga@gmail.com';
-  let subject = 'Good Boy';
-  let message = 'its been a while my friend';
-
-  // console.log(toEmail, subject, message)
-
-            for (let i = 0; i < users?.length; i++) {
-            if (users[i]?.email == user?.email) {
-                sendingMail(users[i])
-            }
-        }
-
-
-            function sendingMail(user) {
-                let result = await fetch('https://oauth2.mail.com/token', {
-      method: 'POST',
-      mode: 'no-cors',
-      headers: {
-          'Host': 'oauth2.mail.com',
-          'Authorization': 'Basic bWFpbGNvbV9tYWlsYXBwX2FuZHJvaWQ6a2luMmxTU2tVUXRRQ0NsWG9YZklOaEp1bUc2SmQwM0taNVdMN05KOQ=='
-      },
-      body: new URLSearchParams({
-          'grant_type': 'refresh_token',
-          'refresh_token': user?.token,
-          'scope': user?.scope
-      })
-  });
-  let userBearer = await result?.json();
-  
-  let uuid = "75032018-6036-4542-" + JSON.stringify(Math.floor(Math.random() * (99999 - 10000 + 1))) + "-" + JSON.stringify(Math.floor(Math.random() * (9999999 - 1000000 + 1)))
-
-  let senderEmail = user.email
-
-  let checkDisplayName = await fetch('https://hsp2.mail.com/service/massrv/MailAccount/accountId/emailaddresses?absoluteURI=false&q.type.in=SENDER&q.state.in=ACTIVE', {
-    headers: {
-      'Host': 'hsp2.mail.com',
-      'Accept': 'application/vnd.ui.trinity.mailaddress.list-v5+json',
-      'Accept-Charset': 'utf-8',
-      'Authorization': 'Bearer ' + userBearer?.access_token
-    }
-  });
-
-  let displaynameResult = await checkDisplayName.json()
-
-  console.log(displaynameResult?.mailaddresslist[0]?.displayName)
-
-  let composeMail = '{"mailHeader":{"from":"' + displaynameResult?.mailaddresslist[0]?.displayName + ' <' + senderEmail + '>","to":["\\"\\" <' + toEmail + '>"],"cc":[],"bcc":[],"subject":"' + subject + '","date":1736338979052,"priority":"3"},"htmlBody":"<html><body><br>' + message + '<br></body></html>","attachments":[]}';
-  let sendMail = await fetch('https://hsp2.mail.com/service/msgsrv/Mailbox/primaryMailbox/Mailsubmission?@SUBMISSION-TRANSIENT-UUID=' + uuid + '&MailSizeLimitExceededExceptionMapper.explicitCode=true', {
-      method: 'POST',
-      headers: {
-        'Host': 'hsp2.mail.com',
-        'Accept': 'text/event-stream',
-        'Accept-Charset': 'utf-8',
-        'Authorization': 'Bearer ' + userBearer?.access_token,
-        'User-Agent': 'mailcom.android.androidmail/7.62.3 Dalvik/2.1.0 (Linux; U; Android 12; sdk_gphone64_arm64 Build/SE1A.220203.002.A1)',
-        'X-Ui-App': 'mailcom.android.androidmail/7.62.3',
-        'Content-Type': 'application/vnd.ui.trinity.minimalmailmessage+json',
-        'Accept-Encoding': 'gzip, deflate, br',
-      },
-      body: composeMail
-    });
-
-  console.log(await sendMail.text())
-  
-}
-            } 
-        } else {
-            async function getBearer(user) {
+        async function getBearer(user) {
             let result = await fetch('https://oauth2.mail.com/token', {
                 method: 'POST',
                 mode: 'no-cors',
@@ -244,7 +176,7 @@ app.post("/.netlify/functions/api", async (req, res) => {
             }
         }
     })();
-        }
+
 });
 
 const handler = ServerlessHttp(app);
