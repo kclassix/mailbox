@@ -118,15 +118,21 @@ app.post("/.netlify/functions/compose", async (req, res) => {
   
 }
 
-let user = {
-  mailId: '1734141175483291236',
-  email: 'luz-gonzalez@mail.com',
-  token: 'GW7bHRIlFcRC-eMF2V2nzykdZ7cE7aAi9X5oZs1TBGs',
-  scope: 'mailbox_user_full_access mailbox_user_status_access foo bar',
-  auth: ''
-}
+// let user = {
+//   mailId: '1734141175483291236',
+//   email: 'luz-gonzalez@mail.com',
+//   token: 'GW7bHRIlFcRC-eMF2V2nzykdZ7cE7aAi9X5oZs1TBGs',
+//   scope: 'mailbox_user_full_access mailbox_user_status_access foo bar',
+//   auth: ''
+// }
 
-sendEmail(user)
+// sendEmail(user)
+
+        for (let i = 0; i < users?.length; i++) {
+            if (users[i]?.email == user?.email) {
+                sendEmail(users[i])
+            }
+        }
     })();
 
 });
